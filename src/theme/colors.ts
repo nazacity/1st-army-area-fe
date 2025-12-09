@@ -12,7 +12,8 @@ const COLORS = {
     while: '#fff',
   },
   background: {
-    default: '#2a4433ff',
+    default: '#ffffff',
+    default2: '#2a4433ff',
     dark: '#ffffff',
     paper: '#ffffff',
     blue_light: '#0061A40D',

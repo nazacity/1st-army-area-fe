@@ -4,8 +4,11 @@ import { IUser } from 'models/user.model';
 const initialState = {
   isLogin: false,
   user: undefined as IUser | undefined,
-  selectedAddress: '',
-  selectedCartItemLists: [] as string[],
+  lineInfo: {
+    displayName: '',
+    lineId: '',
+    profileImageUrl: '',
+  },
 };
 
 const userSlice = createSlice({
@@ -22,13 +25,27 @@ const userSlice = createSlice({
       state.isLogin = true;
       state.user = action.payload;
     },
-
     clearUser() {
       return initialState;
+    },
+    setLineInfo(
+      state,
+      action: {
+        type: string;
+        payload: {
+          displayName: string;
+          lineId: string;
+          profileImageUrl: string;
+        };
+      }
+    ) {
+      console.log(action.payload);
+
+      state.lineInfo = action.payload;
     },
   },
 });
 
-export const { setUser, clearUser } = userSlice.actions;
+export const { setUser, clearUser, setLineInfo } = userSlice.actions;
 
 export default userSlice.reducer;

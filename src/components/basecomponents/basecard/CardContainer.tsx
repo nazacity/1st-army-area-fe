@@ -1,9 +1,9 @@
 import React from 'react';
-import { Box } from '@mui/material';
+import { Box, SxProps, Theme } from '@mui/material';
 
 interface IProps {
   children: React.ReactNode;
-  style?: React.CSSProperties;
+  style?: SxProps<Theme>;
 }
 
 const CardContainer: React.FC<IProps> = ({ children, style }) => {

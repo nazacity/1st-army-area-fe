@@ -14,9 +14,15 @@ const authServices = {
         try {
           const res = await request.post('/auth/user/sign-in', data);
 
-          signinHelper(res.data.data);
+          if (res.data.data && res.data.data?.token?.accessToken) {
+            signinHelper(res.data.data);
 
-          return res.data.data;
+            return res.data.data;
+          } else {
+            return {
+              user: null,
+            };
+          }
         } catch (error) {
           throw error.response.data.message;
         }

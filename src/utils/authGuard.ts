@@ -4,7 +4,7 @@ import request from './request';
 
 const verifyUser = async (accessToken: string) => {
   try {
-    const res = await request.get('/customer/info', {
+    const res = await request.get('/user/info', {
       headers: {
         Authorization: `Bearer ${accessToken}`,
       },

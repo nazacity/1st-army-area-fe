@@ -1,53 +1,14 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Box } from '@mui/system';
 import { Paper } from '@mui/material';
 import HomeBottomNavigation from '../navbar/BottomNavigation';
-import authServices from 'services/auth.services';
-import { useAppDispatch } from 'store';
-import { setUser } from 'store/slices/userSlice';
-import liff from '@line/liff';
+import { COLORS } from 'theme';
 
 interface IProps {
   children: React.ReactNode;
 }
 
 const PageContainer: React.FC<IProps> = ({ children }) => {
-  const dispatch = useAppDispatch();
-
-  const { mutate: signinByLine } = authServices.useMutationSigninByLine(
-    (data) => {
-      dispatch(setUser(data.user));
-    },
-    (err) => {
-      console.log(err);
-    }
-  );
-
-  const liffInit = async () => {
-    try {
-      await liff.init({
-        liffId: process.env.NEXT_PUBLIC_LINE_LIFF_ID || '',
-        withLoginOnExternalBrowser: true,
-      });
-
-      if (liff.isLoggedIn()) {
-        const profile = await liff.getProfile();
-
-        signinByLine({
-          displayName: profile.displayName,
-          lineId: profile.userId,
-          profileImageUrl: profile.pictureUrl || '',
-        });
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  useEffect(() => {
-    // liffInit();
-  }, [liff]);
-
   return (
     <Box
       sx={{
@@ -64,6 +25,12 @@ const PageContainer: React.FC<IProps> = ({ children }) => {
           overflowY: 'scroll',
           overflowX: 'hidden',
           position: 'relative',
+          bgcolor: COLORS.background.default2,
+          backgroundImage: 'url("./images/background.jpg")',
+          backgroundRepeat: 'no-repeat',
+          backgroundPosition: 'center center',
+          backgroundSize: { xs: 'cover', md: 'cover' },
+          height: '100vh',
         }}
         elevation={1}
       >

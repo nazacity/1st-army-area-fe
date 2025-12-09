@@ -5,6 +5,7 @@ import { HiUserCircle } from 'react-icons/hi2';
 import Image from 'next/image';
 import CardContainer from 'components/basecomponents/basecard/CardContainer';
 import { Box, Typography } from '@mui/material';
+import { COLORS } from 'theme';
 
 interface IProps {
   item: IUserScoreInfo | undefined;
@@ -147,7 +148,7 @@ const RankCard: React.FC<IProps> = ({ item, index }) => {
           />
         )}
         <Typography
-          sx={{ mt: 2 }}
+          sx={{ mt: 2, color: COLORS.orange[3], fontWeight: 600, fontSize: 20 }}
         >{`${item.user.rank} ${item.user.firstName} ${item.user.lastName}`}</Typography>
       </Box>
     </CardContainer>

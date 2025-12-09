@@ -1,6 +1,11 @@
-import { useQuery } from '@tanstack/react-query';
+import { useMutation, useQuery } from '@tanstack/react-query';
+import { UserScoreHistoryDto } from 'dto/score.dto';
 import { ResponseModel } from 'models/respone.model';
-import { EUserBase, IUserScoreInfo } from 'models/user.model';
+import {
+  EUserBase,
+  IUserScoreHistory,
+  IUserScoreInfo,
+} from 'models/user.model';
 import authenticatedRequest from 'utils/authenticatedRequest';
 
 const scoreServices = {
@@ -9,7 +14,6 @@ const scoreServices = {
     page,
     month,
     year,
-
     base,
   }: {
     take: number;
@@ -56,6 +60,28 @@ const scoreServices = {
           throw error;
         }
       },
+    });
+  },
+  useMutationCreateUserScoreHistory(
+    onSuccess: (data: IUserScoreHistory) => void,
+    onError: (error: any) => void
+  ) {
+    return useMutation<IUserScoreHistory, Error, UserScoreHistoryDto>({
+      mutationFn: async (data: UserScoreHistoryDto) => {
+        try {
+          const res = await authenticatedRequest.post(
+            '/user-score-history',
+            data
+          );
+
+          return res.data.data;
+          return;
+        } catch (error) {
+          throw error.response.data.message;
+        }
+      },
+      onSuccess,
+      onError,
     });
   },
 };

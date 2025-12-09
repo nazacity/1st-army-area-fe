@@ -10,6 +10,7 @@ import {
 } from '@mui/material';
 import CardContainer from 'components/basecomponents/basecard/CardContainer';
 import summaryServices from 'services/summary.services';
+import numeral from 'numeral';
 
 interface IProps {}
 
@@ -42,7 +43,7 @@ const SummaryContainer: React.FC<IProps> = ({}) => {
                       ยอดกำลัง ทภ.1 เข้าร่วมกิจกรรม
                     </Typography>
                     <Typography variant="h2">
-                      {data?.totalMember || 0}
+                      {numeral(data?.totalMember || 0).format('0,0')} นาย
                     </Typography>
                   </CardContent>
                 </CardActionArea>
@@ -56,7 +57,7 @@ const SummaryContainer: React.FC<IProps> = ({}) => {
                       ระยะทางรวมของกำลังพล ทภ.1
                     </Typography>
                     <Typography variant="h2">
-                      {data?.totalDistance || 0}
+                      {numeral(data?.totalDistance || 0).format('0,0')} กม.
                     </Typography>
                   </CardContent>
                 </CardActionArea>
@@ -71,7 +72,7 @@ const SummaryContainer: React.FC<IProps> = ({}) => {
                     </Typography>
                     <Typography variant="h2">
                       {data?.totalTime
-                        ? `${Math.floor(data?.totalTime / 60)} ชม. ${data.totalTime % 60} นาที`
+                        ? `${numeral(Math.floor(data?.totalTime / 60)).format('0,0')} ชม. ${data.totalTime % 60} นาที`
                         : '0 ชม. 0 นาที'}
                     </Typography>
                   </CardContent>

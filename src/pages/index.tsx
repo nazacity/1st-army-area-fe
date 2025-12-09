@@ -3,7 +3,6 @@ import type { NextPage } from 'next';
 import Box from '@mui/material/Box';
 import { Theme } from '@mui/material/styles';
 import { useMediaQuery } from '@mui/material';
-import { COLORS } from 'theme';
 import SummaryContainer from 'components/page/home/SummaryContainer';
 import RankContainer from 'components/page/home/RankContainer';
 import CardContainer from 'components/basecomponents/basecard/CardContainer';
@@ -17,16 +16,24 @@ const HomePage: NextPage = () => {
         pt: mdDown ? 8 : 10,
         pb: 10,
         minHeight: '100vh',
-        bgcolor: COLORS.background.default,
       }}
     >
       <Box sx={{ px: 2 }}>
         <CardContainer>
-          <img
-            src="/logo/logo.png"
-            alt="Army Area Logo"
-            style={{ width: '10%' }}
-          />
+          <Box sx={{ display: { xs: 'none', md: 'block' } }}>
+            <img
+              src="/logo/logo.png"
+              alt="Army Area Logo"
+              style={{ width: '10%' }}
+            />
+          </Box>
+          <Box sx={{ display: { xs: 'block', md: 'none' } }}>
+            <img
+              src="/logo/logo.png"
+              alt="Army Area Logo"
+              style={{ width: '20%' }}
+            />
+          </Box>
         </CardContainer>
         <Box>
           <SummaryContainer />

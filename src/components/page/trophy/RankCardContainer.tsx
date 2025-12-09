@@ -8,25 +8,27 @@ import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
 import scoreServices from 'services/score.services';
 import { IUserScoreInfo } from 'models/user.model';
-import RankCard from './RankCard';
+import RankCard from '../home/RankCard';
+import { useFormContext } from 'react-hook-form';
+import { MonthSelectDto } from 'dto/score.dto';
+import MonthSelector from './MonthSelector';
 
 interface IProps {}
 
-const RankContainer: React.FC<IProps> = ({}) => {
+const RankCardContainer: React.FC<IProps> = ({}) => {
+  const { watch } = useFormContext<MonthSelectDto>();
   const [userScore, setUserScore] = useState<(IUserScoreInfo | undefined)[]>(
     []
   );
-
   const { data } = scoreServices.useQueryGetUserScoreByPublic({
     take: 3,
     page: 1,
-    month: dayjs().month(),
-    year: dayjs().year(),
+    month: dayjs(watch('date')).month(),
+    year: dayjs(watch('date')).year(),
   });
 
   useEffect(() => {
     if (data?.data && data.data.length > 0) {
-      console.log('test');
       const filtedData = data.data.filter((item) => item.sumDistance > 0);
       if (filtedData.length >= 3) {
         setUserScore(filtedData.slice(0, 3));
@@ -41,18 +43,18 @@ const RankContainer: React.FC<IProps> = ({}) => {
   }, [data]);
 
   return (
-    <Box>
+    <Box sx={{ mb: 2 }}>
       <Typography
         variant="h2"
         sx={{
           textAlign: 'center',
-          my: 4,
           color: '#ffffff',
         }}
       >
-        จัดอันดับประจำเดือน {dayjs().format('MMM BBBB')}
+        จัดอันดับประจำเดือน
       </Typography>
-      <Box>
+      <MonthSelector />
+      <Box sx={{ mt: 4 }}>
         <Swiper
           effect={'coverflow'}
           grabCursor={true}
@@ -81,4 +83,4 @@ const RankContainer: React.FC<IProps> = ({}) => {
   );
 };
 
-export default RankContainer;
+export default RankCardContainer;

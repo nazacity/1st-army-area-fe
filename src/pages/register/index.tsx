@@ -1,11 +1,10 @@
 import React from 'react';
-import { useMediaQuery, Theme } from '@mui/material';
-import { Box } from '@mui/system';
-import { COLORS } from 'theme';
+import { Box, Theme, useMediaQuery } from '@mui/material';
+import RegisterForm from 'components/page/register/RegisterForm';
 
 interface IProps {}
 
-const ReviewsPage: React.FC<IProps> = ({}) => {
+const RegisterPage: React.FC<IProps> = ({}) => {
   const mdDown = useMediaQuery((theme: Theme) => theme.breakpoints.down('md'));
   return (
     <Box
@@ -13,12 +12,11 @@ const ReviewsPage: React.FC<IProps> = ({}) => {
         pt: mdDown ? 8 : 10,
         pb: 10,
         minHeight: '100vh',
-        bgcolor: COLORS.background.default,
       }}
     >
-      Reviews
+      <RegisterForm />
     </Box>
   );
 };
 
-export default ReviewsPage;
+export default RegisterPage;
