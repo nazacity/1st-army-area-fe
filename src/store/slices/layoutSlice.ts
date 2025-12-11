@@ -29,21 +29,10 @@ const layoutSlice = createSlice({
     handleCloseSnackbar(state) {
       state.snackbar.open = false;
     },
-    handleLoginModal(state, action) {
-      state.loginModalOpen = action.payload;
-    },
-    handleCartModal(state, action) {
-      state.cartModalOpen = action.payload;
-    },
   },
 });
 
-export const {
-  handleSideBar,
-  handleShowSnackbar,
-  handleCloseSnackbar,
-  handleLoginModal,
-  handleCartModal,
-} = layoutSlice.actions;
+export const { handleSideBar, handleShowSnackbar, handleCloseSnackbar } =
+  layoutSlice.actions;
 
 export default layoutSlice.reducer;

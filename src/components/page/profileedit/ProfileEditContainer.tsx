@@ -18,6 +18,7 @@ import { LoadingButton } from '@mui/lab';
 import { useRouter } from 'next/router';
 import { ProfileEditDto, ProfileEditFormSchema } from 'dto/user.dto';
 import userServices from 'services/user.services';
+import { handleShowSnackbar } from 'store/slices/layoutSlice';
 
 interface IProps {}
 
@@ -37,11 +38,18 @@ const ProfileEditContainer: React.FC<IProps> = ({}) => {
     (data) => {
       if (data) {
         dispatch(setUser(data));
-        router.push('/account');
+        dispatch(
+          handleShowSnackbar({
+            open: true,
+            severity: 'success',
+            message: 'บันทึกข้อมูลเรียบร้อย',
+          })
+        );
       }
       setTimeout(() => {
+        router.back();
         setLoading(false);
-      }, 600);
+      }, 800);
     },
     (error) => {
       setTimeout(() => {

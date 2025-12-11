@@ -1,4 +1,8 @@
 {
+  "common": {
+    "limit_file": "ขนาดไม่เกิน",
+    "click_to_upload": "กดเพื่ออัพโหลด"
+  },
   "auth": {
     "sign_out": "ออกจากระบบ",
     "username": "ชื่อบัญชีผู้ใช้",
