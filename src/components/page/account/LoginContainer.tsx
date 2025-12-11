@@ -70,9 +70,9 @@ const LoginContainer: React.FC<IProps> = ({}) => {
         );
 
         signinByLine({
-          // displayName: res2.data.displayName,
+          displayName: res2.data.displayName,
           lineId: res2.data.userId,
-          // profileImageUrl: res2.data.pictureUrl,
+          profileImageUrl: res2.data.pictureUrl,
         });
       } catch (error) {
         console.log(error);

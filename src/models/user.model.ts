@@ -57,7 +57,7 @@ export interface IUser {
   createdAt: string;
   updatedAt: string;
   isDeleted: boolean;
-  rank: string;
+  rank: EUserRank;
   firstName: string;
   lastName: string;
   gender: EUserGender;

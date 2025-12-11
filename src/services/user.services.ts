@@ -1,4 +1,5 @@
-import { useQuery } from '@tanstack/react-query';
+import { useMutation, useQuery } from '@tanstack/react-query';
+import { ProfileEditDto } from 'dto/user.dto';
 import { ResponseModel } from 'models/respone.model';
 import { IUser, IUserScoreHistory } from 'models/user.model';
 import authenticatedRequest from 'utils/authenticatedRequest';
@@ -49,6 +50,24 @@ const userServices = {
           throw error;
         }
       },
+    });
+  },
+  useMutationProfileEdit(
+    onSuccess: (data: IUser) => void,
+    onError: (error: any) => void
+  ) {
+    return useMutation<IUser, Error, ProfileEditDto>({
+      mutationFn: async (data: ProfileEditDto) => {
+        try {
+          const res = await authenticatedRequest.patch('/user', data);
+
+          return res.data.data;
+        } catch (error) {
+          throw error.response.data.message;
+        }
+      },
+      onSuccess,
+      onError,
     });
   },
 };

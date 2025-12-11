@@ -2,6 +2,7 @@ import React from 'react';
 import { useMediaQuery } from '@mui/material';
 import { Box, Theme } from '@mui/system';
 import TopBackButton from 'components/layout/navbar/TopBackButton';
+import ProfileEditContainer from 'components/page/profileedit/ProfileEditContainer';
 
 interface IProps {}
 
@@ -16,6 +17,7 @@ const ProfileEditPage: React.FC<IProps> = ({}) => {
       }}
     >
       <TopBackButton />
+      <ProfileEditContainer />
     </Box>
   );
 };
