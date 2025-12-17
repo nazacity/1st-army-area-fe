@@ -70,7 +70,7 @@ const RecordPage: React.FC<IProps> = ({}) => {
           <Typography>
             {params.row.index
               ? (page - 1) * tableSize + params.row.index + 1
-              : 0}
+              : 1}
           </Typography>
         </Box>
       ),
