@@ -64,7 +64,7 @@ const AccountPage: React.FC<IProps> = ({ user }) => {
   };
 
   useEffect(() => {
-    // liffInit();
+    liffInit();
   }, [liff]);
 
   useEffect(() => {
