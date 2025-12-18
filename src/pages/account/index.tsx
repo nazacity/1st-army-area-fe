@@ -53,9 +53,9 @@ const AccountPage: React.FC<IProps> = ({ user }) => {
         );
 
         signinByLine({
-          // displayName: profile.displayName,
+          displayName: profile.displayName,
           lineId: profile.userId,
-          // profileImageUrl: profile.pictureUrl || '',
+          profileImageUrl: profile.pictureUrl || '',
         });
       }
     } catch (error) {

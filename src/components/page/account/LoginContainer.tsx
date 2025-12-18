@@ -91,7 +91,6 @@ const LoginContainer: React.FC<IProps> = ({}) => {
           flexDirection: 'column',
           alignItems: 'center',
           m: 1,
-          height: '60vh',
         }}
       >
         <img
