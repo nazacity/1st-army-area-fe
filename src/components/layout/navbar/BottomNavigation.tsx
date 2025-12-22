@@ -51,6 +51,9 @@ const HomeBottomNavigation: React.FC<IProps> = ({}) => {
       } else {
         if (routePath !== '/register') {
           router.push('/register');
+          setTimeout(() => {
+            router.reload();
+          }, 600);
         }
       }
     },
