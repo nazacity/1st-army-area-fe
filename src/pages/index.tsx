@@ -26,7 +26,7 @@ const HomePage: NextPage = () => {
       <Box>
         <SummaryContainer />
         <RankContainer />
-        <Box sx={{ height: 100 }}></Box>
+        <Box sx={{ height: 100 }} />
       </Box>
     </Box>
   );

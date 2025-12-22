@@ -15,6 +15,7 @@ const RegisterPage: React.FC<IProps> = ({}) => {
       }}
     >
       <RegisterForm />
+      <Box sx={{ height: 100 }} />
     </Box>
   );
 };
