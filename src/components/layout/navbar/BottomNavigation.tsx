@@ -25,8 +25,6 @@ const HomeBottomNavigation: React.FC<IProps> = ({}) => {
   const user = useAppSelector((state) => state.user.user);
   const dispatch = useAppDispatch();
 
-  console.log(user);
-
   const routePath = useMemo(() => {
     return Router.pathname.split('/')[1];
   }, [Router.pathname]);
@@ -51,10 +49,9 @@ const HomeBottomNavigation: React.FC<IProps> = ({}) => {
       if (data.user) {
         dispatch(setUser(data.user));
       } else {
-        router.push('/register');
-        setTimeout(() => {
-          router.reload();
-        }, 600);
+        if (routePath !== '/register') {
+          router.push('/register');
+        }
       }
     },
     (err) => {
