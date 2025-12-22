@@ -4,7 +4,6 @@ import {
   BottomNavigation,
   BottomNavigationAction,
   Box,
-  Container,
   Paper,
 } from '@mui/material';
 import Router from 'next/router';
@@ -12,7 +11,11 @@ import { VscAccount } from 'react-icons/vsc';
 import { HiMiniHome } from 'react-icons/hi2';
 import { IoMdTrophy } from 'react-icons/io';
 import useTranslation from 'next-translate/useTranslation';
-import { useAppSelector } from 'store';
+import { useAppDispatch, useAppSelector } from 'store';
+import authServices from 'services/auth.services';
+import liff from '@line/liff';
+import { useRouter } from 'next/router';
+import { setLineInfo, setUser } from 'store/slices/userSlice';
 
 interface IProps {}
 
@@ -20,6 +23,7 @@ const HomeBottomNavigation: React.FC<IProps> = ({}) => {
   const { t } = useTranslation();
   const [value, setValue] = React.useState('recents');
   const user = useAppSelector((state) => state.user.user);
+  const dispatch = useAppDispatch();
 
   const routePath = useMemo(() => {
     return Router.pathname.split('/')[1];
@@ -37,6 +41,54 @@ const HomeBottomNavigation: React.FC<IProps> = ({}) => {
   useEffect(() => {
     setValue(routePath);
   }, [routePath]);
+
+  const router = useRouter();
+
+  const { mutate: signinByLine } = authServices.useMutationSigninByLine(
+    (data) => {
+      if (data.user) {
+        dispatch(setUser(data.user));
+      } else {
+        router.push('/register');
+      }
+    },
+    (err) => {
+      console.log(err);
+    }
+  );
+
+  const liffInit = async () => {
+    try {
+      await liff.init({
+        liffId: process.env.NEXT_PUBLIC_LINE_LIFF_ID || '',
+        withLoginOnExternalBrowser: true,
+      });
+
+      if (liff.isLoggedIn()) {
+        const profile = await liff.getProfile();
+
+        dispatch(
+          setLineInfo({
+            displayName: profile.displayName,
+            lineId: profile.userId,
+            profileImageUrl: profile.pictureUrl || '',
+          })
+        );
+
+        signinByLine({
+          displayName: profile.displayName,
+          lineId: profile.userId,
+          profileImageUrl: profile.pictureUrl || '',
+        });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    liffInit();
+  }, [liff]);
 
   return (
     <Box
