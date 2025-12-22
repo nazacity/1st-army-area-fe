@@ -18,6 +18,7 @@ const ProfileEditPage: React.FC<IProps> = ({}) => {
     >
       <TopBackButton />
       <ProfileEditContainer />
+      <Box sx={{ height: 100 }} />
     </Box>
   );
 };

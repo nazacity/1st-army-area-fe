@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import useTranslation from 'next-translate/useTranslation';
 import CardContainer from 'components/basecomponents/basecard/CardContainer';
 import { Box, Button } from '@mui/material';
 import { useRouter } from 'next/router';
@@ -12,7 +11,6 @@ import authServices from 'services/auth.services';
 interface IProps {}
 
 const LoginContainer: React.FC<IProps> = ({}) => {
-  const { t } = useTranslation();
   const router = useRouter();
   const dispatch = useAppDispatch();
   const client_id = process.env.NEXT_PUBLIC_LINE_CLIENT_ID;

@@ -221,6 +221,7 @@ const RecordPage: React.FC<IProps> = ({}) => {
           pagination={undefined}
         />
       </Box>
+      <Box sx={{ height: 100 }} />
     </Box>
   );
 };
