@@ -25,6 +25,8 @@ const HomeBottomNavigation: React.FC<IProps> = ({}) => {
   const user = useAppSelector((state) => state.user.user);
   const dispatch = useAppDispatch();
 
+  console.log(user);
+
   const routePath = useMemo(() => {
     return Router.pathname.split('/')[1];
   }, [Router.pathname]);
@@ -50,6 +52,9 @@ const HomeBottomNavigation: React.FC<IProps> = ({}) => {
         dispatch(setUser(data.user));
       } else {
         router.push('/register');
+        setTimeout(() => {
+          router.reload();
+        }, 600);
       }
     },
     (err) => {
@@ -61,7 +66,7 @@ const HomeBottomNavigation: React.FC<IProps> = ({}) => {
     try {
       await liff.init({
         liffId: process.env.NEXT_PUBLIC_LINE_LIFF_ID || '',
-        withLoginOnExternalBrowser: true,
+        // withLoginOnExternalBrowser: true,
       });
 
       if (liff.isLoggedIn()) {
