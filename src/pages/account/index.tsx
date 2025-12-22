@@ -67,8 +67,10 @@ const AccountPage: React.FC<IProps> = ({ user }) => {
   };
 
   useEffect(() => {
-    liffInit();
-  }, [liff]);
+    if (!isLogin) {
+      liffInit();
+    }
+  }, [liff, isLogin]);
 
   useEffect(() => {
     if (isLogin && user) {
