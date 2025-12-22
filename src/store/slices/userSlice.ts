@@ -39,8 +39,6 @@ const userSlice = createSlice({
         };
       }
     ) {
-      console.log(action.payload);
-
       state.lineInfo = action.payload;
     },
   },

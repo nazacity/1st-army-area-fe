@@ -25,6 +25,9 @@ const AccountPage: React.FC<IProps> = ({ user }) => {
     (data) => {
       if (data.user) {
         dispatch(setUser(data.user));
+        setTimeout(() => {
+          router.push('/');
+        }, 600);
       } else {
         router.push('/register');
       }

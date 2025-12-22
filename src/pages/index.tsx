@@ -23,12 +23,10 @@ const HomePage: NextPage = () => {
         alt="Army Area Logo"
         style={{ width: '100%' }}
       />
-      <Box sx={{ px: 2 }}>
-        <Box>
-          <SummaryContainer />
-          <RankContainer />
-          <Box sx={{ height: 100 }}></Box>
-        </Box>
+      <Box>
+        <SummaryContainer />
+        <RankContainer />
+        <Box sx={{ height: 100 }}></Box>
       </Box>
     </Box>
   );
