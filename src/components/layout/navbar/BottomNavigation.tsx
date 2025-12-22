@@ -16,6 +16,7 @@ import authServices from 'services/auth.services';
 import liff from '@line/liff';
 import { useRouter } from 'next/router';
 import { setLineInfo, setUser } from 'store/slices/userSlice';
+import { log } from 'console';
 
 interface IProps {}
 
@@ -49,7 +50,7 @@ const HomeBottomNavigation: React.FC<IProps> = ({}) => {
       if (data.user) {
         dispatch(setUser(data.user));
       } else {
-        if (routePath !== '/register') {
+        if (routePath !== 'register') {
           router.push('/register');
           setTimeout(() => {
             router.reload();
