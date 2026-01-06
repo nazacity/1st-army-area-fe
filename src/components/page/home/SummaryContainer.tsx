@@ -16,8 +16,8 @@ interface IProps {}
 
 const SummaryContainer: React.FC<IProps> = ({}) => {
   const { data } = summaryServices.useQueryGetAllSummary({
-    month: 11,
-    year: 2025,
+    month: new Date().getMonth(),
+    year: new Date().getFullYear(),
   });
 
   return (

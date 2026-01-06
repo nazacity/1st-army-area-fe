@@ -72,7 +72,7 @@ export interface IUser {
 }
 
 export interface IUserScoreInfo {
-  index?: number;
+  index: number;
   createdAt: string;
   updatedAt: string;
   isDeleted: boolean;
@@ -83,7 +83,7 @@ export interface IUserScoreInfo {
 }
 
 export interface IUserScoreHistory {
-  index?: number;
+  index: number;
   createdAt: string;
   updatedAt: string;
   isDeleted: boolean;

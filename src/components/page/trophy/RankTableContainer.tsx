@@ -38,7 +38,7 @@ const RankTableContainer: React.FC<IProps> = ({}) => {
   useEffect(() => {
     if (data?.data && data.data.length > 0) {
       const addedIndex = data.data.map((item, index) => {
-        return { index, ...item };
+        return { ...item, index };
       });
       setData(addedIndex);
       setTotal(data.meta.total);
@@ -62,9 +62,7 @@ const RankTableContainer: React.FC<IProps> = ({}) => {
           }}
         >
           <Typography>
-            {params.row.index
-              ? (page - 1) * tableSize + params.row.index + 1
-              : 1}
+            {(page - 1) * tableSize + params.row.index + 1}
           </Typography>
         </Box>
       ),
