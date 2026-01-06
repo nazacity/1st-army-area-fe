@@ -82,6 +82,12 @@ export interface IUserScoreInfo {
   sumDistance: number;
 }
 
+export enum EUserScoreHistoryStatus {
+  'approved' = 'approved',
+  'pending' = 'pending',
+  'rejected' = 'rejected',
+}
+
 export interface IUserScoreHistory {
   index: number;
   createdAt: string;
@@ -91,4 +97,5 @@ export interface IUserScoreHistory {
   time: number;
   distance: number;
   imageUrl: string;
+  status: EUserScoreHistoryStatus;
 }

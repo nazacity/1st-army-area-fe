@@ -26,5 +26,12 @@
   "gender": {
     "male": "ชาย",
     "female": "หญิง"
+  },
+  "history": {
+    "status": {
+      "approved": "อนุมัติ",
+      "pending": "รออนุมัติ",
+      "rejected": "ปฏิเสธ"
+    }
   }
 }

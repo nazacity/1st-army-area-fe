@@ -1,1 +1,37 @@
-{}
+{
+  "common": {
+    "limit_file": "ขนาดไม่เกิน",
+    "click_to_upload": "กดเพื่ออัพโหลด"
+  },
+  "auth": {
+    "sign_out": "ออกจากระบบ",
+    "username": "ชื่อบัญชีผู้ใช้",
+    "password": "รหัสผ่าน",
+    "sign_in": "เข้าสู่ระบบ"
+  },
+  "bottom_bar": {
+    "home": "หน้าแรก",
+    "trophy": "ข้อมูล",
+    "account": "บัญชีผู้ใช้"
+  },
+  "table": {
+    "index": "ลำดับ",
+    "name": "ยศ ชื่อ-สกุล",
+    "image": "รูปโปรไฟล์",
+    "distance": "ระยะทาง(กม.)",
+    "time": "จำนวนเวลา",
+    "createdAt": "วัน-เดือน-ปี",
+    "record_image": "ภาพบันทึก"
+  },
+  "gender": {
+    "male": "ชาย",
+    "female": "หญิง"
+  },
+  "history": {
+    "status": {
+      "approved": "อนุมัติ",
+      "pending": "รออนุมัติ",
+      "rejected": "ปฏิเสธ"
+    }
+  }
+}

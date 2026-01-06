@@ -44,7 +44,7 @@ const RecordPage: React.FC<IProps> = ({}) => {
   useEffect(() => {
     if (data?.data && data.data.length > 0) {
       const addedIndex = data.data.map((item, index) => {
-        return { index, ...item };
+        return { ...item, index };
       });
       setData(addedIndex);
       setTotal(data.meta.total);
@@ -175,6 +175,29 @@ const RecordPage: React.FC<IProps> = ({}) => {
         </Box>
       ),
       width: 100,
+    },
+    {
+      field: 'stauts',
+      headerName: t('common:table.status'),
+      sortable: false,
+      disableColumnMenu: true,
+      headerAlign: 'center',
+      align: 'center',
+      renderCell: (params: GridRenderCellParams<IUserScoreHistory>) => (
+        <Box
+          sx={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            height: '100%',
+          }}
+        >
+          <Typography align="center" sx={{ width: '100%' }}>
+            {t(`common:history.status.${params.row.status}`)}
+          </Typography>
+        </Box>
+      ),
+      width: 180,
     },
   ];
 
